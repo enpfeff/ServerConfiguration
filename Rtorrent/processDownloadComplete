@@ -3,31 +3,15 @@
 src=$1
 target=$2
 LOG=/opt/rtorrent/log/moveLog.txt
-api_key=
-domain=localhost
-port=5050
 baseDir=`basename ${target}`
 
 echo "`date`: Moving - Source:${src} --> Target:${target}" >> $LOG
-echo "`date`: Base Directory is: ${baseDir}" >> $LOG
-
 mv -u "${src}" "${target}"
 
-#if [ "${baseDir}" == "Movie_UnNamed" ]; then
-#	echo "`date`:  Source was a Movie, Calling CouchPotato API" >> $LOG
-#	sleep 10
-#	echo "`date`: calling rename scanner at: http://${domain}:${port}/api/${api_key}/renamer.scan" >> $LOG
-#	curl http://${domain}:${port}/api/${api_key}/renamer.scan
-#	sleep 10
-#	echo "`date`: manually updating CouchPotato at: http://${domain}:${port}/api/${api_key}/manage.update" >> $LOG
-#	curl http://${domain}:${port}/api/${api_ley}/manage.update
-#	echo "`date`: Running renamer again" >> $LOG
-#	curl http://${domain}:${port}/api/${api_key}/renamer.scan
-#	echo "`date`: Done updating CouchPotato" >> $LOG
-#elif [ "${baseDir}" == "UnsortedMusic" ]; then
-#	echo "`date`:  Source is Music File" >> $LOG
-#	sleep 10
-#	sudo su -c beet import -iq /Drives/Moses/UnsortedMusic enpfeff
-#	echo "`date`:  Done updating beets"
-#fi
+if [ "${baseDir}" == "Movie_UnNamed" ]; then
 
+elif [ "${baseDir}" == "unsortedMusic" ]; then
+	echo "`date`: Music file found"
+fi
+
+echo " " >> $LOG

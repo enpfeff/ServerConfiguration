@@ -59,8 +59,8 @@ schedule = watch_directory_9,10,10,"load.start=/opt/rtorrent/watch/stuff/*.torre
 
 #	move things
 schedule = low_diskspace,5,60,close_low_diskspace=100M
-method.set_key = event.download.finished,process,"d.directory.set=$d.custom1= ;execute=processDownloadComplete,$d.base_path=,$d.custom1="
-
+method.set_key = event.download.finished, rtorrent_move, "d.directory.set=$d.custom1="
+method.set_key = event.download.finished, moving, "execute = /opt/rtorrent/script/processDownloadComplete, $d.base_path=, $d.custom1="
 
 ##################################################################################################################
 #	Advanced
