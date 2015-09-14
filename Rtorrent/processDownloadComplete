@@ -9,7 +9,7 @@ echo "`date`: Moving - Source:${src} --> Target:${target}" >> $LOG
 mv -u "${src}" "${target}"
 
 if [ "${baseDir}" == "Movie_UnNamed" ]; then
-
+	echo "";
 elif [ "${baseDir}" == "unsortedMusic" ]; then
 	echo "`date`: Music file found"
 fi
