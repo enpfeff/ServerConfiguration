@@ -1,17 +1,24 @@
 #!/bin/bash
 
+# for some reason ...
+sleep 5
+
 src=$1
 target=$2
 LOG=/opt/rtorrent/log/moveLog.txt
 baseDir=`basename ${target}`
+filename=$(basename ${src})
 
 echo "`date`: Moving - Source:${src} --> Target:${target}" >> $LOG
+echo "basedir = ${baseDir}, filename = ${filename}" >> $LOG
+echo "cmd = process-tv ${target}/${filename}" >> $LOG
+
 mv -u "${src}" "${target}"
 
-if [ "${baseDir}" == "Movie_UnNamed" ]; then
-
-elif [ "${baseDir}" == "unsortedMusic" ]; then
-	echo "`date`: Music file found"
+if [ "${baseDir}" == "stagedTv" ]; then
+	process-tv "${target}/${filename}"
+elif [ "${baseDir}" == "movie" ]; then
+	plex-updater movie
 fi
 
 echo " " >> $LOG

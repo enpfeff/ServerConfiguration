@@ -48,10 +48,10 @@ dht = disable
 #	Moses
 schedule = watch_directory_1,10,10,"load.start=/opt/rtorrent/watch/misc/*.torrent,d.custom1.set=/drives/moses/misc"
 schedule = watch_directory_2,10,10,"load.start=/opt/rtorrent/watch/music/*.torrent,d.custom1.set=/drives/moses/unsortedMusic"
-schedule = watch_directory_3,10,10,"load.start=/opt/rtorrent/watch/movie/*.torrent,d.custom1.set=/drives/moses/unsortedMovie"
+schedule = watch_directory_3,10,10,"load.start=/opt/rtorrent/watch/movie/*.torrent,d.custom1.set=/drives/moses/movie"
 
 #	Eve
-schedule = watch_directory_5,10,10,"load.start=/opt/rtorrent/watch/tv/*.torrent,d.custom1.set=/drives/eve/tv"
+schedule = watch_directory_5,10,10,"load.start=/opt/rtorrent/watch/tv/*.torrent,d.custom1.set=/drives/eve/stagedTv"
 schedule = watch_directory_6,10,10,"load.start=/opt/rtorrent/watch/programs/*.torrent,d.custom1.set=/drives/eve/programs"
 schedule = watch_directory_7,10,10,"load.start=/opt/rtorrent/watch/games/*.torrent,d.custom1.set=/drives/eve/games"
 schedule = watch_directory_8,10,10,"load.start=/opt/rtorrent/watch/ebooks/*.torrent,d.custom1.set=/drives/eve/ebooks"
@@ -59,8 +59,8 @@ schedule = watch_directory_9,10,10,"load.start=/opt/rtorrent/watch/stuff/*.torre
 
 #	move things
 schedule = low_diskspace,5,60,close_low_diskspace=100M
-method.set_key = event.download.finished, rtorrent_move, "d.directory.set=$d.custom1="
-method.set_key = event.download.finished, moving, "execute = /opt/rtorrent/script/processDownloadComplete, $d.base_path=, $d.custom1="
+method.set_key = event.download.finished, rtorrent_move, "d.directory.set=$d.custom1=;execute = /opt/rtorrent/script/processDownloadComplete, $d.base_path=, $d.custom1="
+# method.set_key = event.download.finished, moving, "execute = /opt/rtorrent/script/processDownloadComplete, $d.base_path=, $d.custom1="
 
 ##################################################################################################################
 #	Advanced
